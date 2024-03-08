@@ -2,6 +2,7 @@
 Hey there, fellow Pokémon trainers! Welcome to Pokedex, your very own digital companion inspired by the iconic Pokédex from the Pokémon series. With Pokedex, you can finally bring your Pokémon adventures to life using cutting-edge computer vision technology.
 
 What's Inside?
+
 Pokémon Detection: Ever wondered which Pokémon is hiding in your backyard? Just point your camera at it, and Pokedex will identify it for you in a flash!
 
 Complete Database: Dive into a treasure trove of Pokémon knowledge! Get details on each Pokémon, including their type, abilities, and more.
