@@ -11,10 +11,13 @@ Help Us Improve: Is Pokedex not quite catching 'em all? No worries! Help us make
 
 
 Got Ideas?
+
 We're all ears! If you have cool ideas for new features or improvements, feel free to share them with us. We're always looking to make Pokedex the very best, like no app ever was!
 
 Wanna Join?
+
 If you're a fellow developer itching to contribute, jump right in! Check out the contribution guidelines to get started.
 
 Let's Connect!
+
 Got questions, feedback, or just wanna chat about Pokémon? Shoot us an email at kottarychethan@gmail.com. We'd love to hear from you!
