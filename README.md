@@ -15,11 +15,17 @@ You can execute the given pythin file using:
       streamlit run Pokedex.py
 
 Make sure you have all the necessary modules installed:
+
 Streamlit
+
 opencv-python
+
 ultralytics
+
 torch
+
 pyttsx3
+
 
 Got Ideas?
 
