@@ -9,6 +9,17 @@ Easy to Use: Pokedex comes with a simple and intuitive interface. Whether you're
 
 Help Us Improve: Is Pokedex not quite catching 'em all? No worries! Help us make it better by providing feedback and suggestions.
 
+How to use?
+
+You can execute the given pythin file using:
+      streamlit run Pokedex.py
+
+Make sure you have all the necessary modules installed:
+Streamlit
+opencv-python
+ultralytics
+torch
+pyttsx3
 
 Got Ideas?
 
