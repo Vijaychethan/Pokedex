@@ -9,14 +9,14 @@ device = 'cuda'
 
 labels = {0: 'pikachu', 1: 'charmander', 2: 'bulbasaur', 3: 'squirtle', 4: 'eevee', 5: 'other', 6: 'jigglypuff'}
 Images = {0: 'Test_Images\Pikachu.png', 1: 'Test_Images\charmander.jpg', 2: 'Test_Images\bulbasaur.jpg', 3: 'Test_Images\ssquirtle.jpg', 4: 'Test_Images\eevee.jpg', 5: 'Test_Images\ash.jpg', 6: 'Test_Images\jigglipuff.jpg'}
-
+st.set_page_config(layout="wide")
 descriptions = {
-    "pikachu": "This is a cute pikachu",
-    "charmander": "Flame tail",
-    "bulbasaur": "Onlion pokemon",
-    'squirtle': "Chad",
-    'eevee': "MPD",
-    'jigglypuff': "Singer"
+    "pikachu": "Pikachu is a short, chubby rodent Pokémon. It is covered in yellow fur with two horizontal brown stripes on its back. It has a small mouth, long, pointed ears with black tips, and brown eyes. Each cheek is a red circle that contains a pouch for electricity storage. It has short forearms with five fingers on each paw, and its feet each have three toes. At the base of its lightning bolt-shaped tail is a patch of brown fur. A female will have a V-shaped notch at the end of its tail, which looks like the top of a heart. It is classified as a quadruped, but it has been known to stand and walk on its hind legs. Therefore Pikachu is a facultative biped.",
+    "charmander": "Charmander is a Fire type Pokémon introduced in Generation 1.Charmander is a bipedal, reptilian Pokémon. Most of its body is colored orange, while its underbelly is light yellow and it has blue eyes. It has a flame at the end of its tail, which is said to signify its health.",
+    "bulbasaur": "Bulbasaur is a Grass/Poison type Pokémon introduced in Generation 1.Bulbasaur is a small, mainly turquoise amphibian Pokémon with red eyes and a green bulb on its back. It is based on a frog/toad, with the bulb resembling a plant bulb that grows into a flower as it evolves.",
+    'squirtle': "Squirtle is a Water type Pokémon introduced in Generation 1.Squirtle is a bipedal, reptilian Pokémon. It has a blue body with purple eyes, a light brown belly, and a tough red-brown shell on its back. It has a long tail that curls into a spiral.",
+    'eevee': "Eevee is a small, mammalian, quadrupedal Pokémon with primarily brown fur. The tip of its bushy tail and its large furry collar are cream-colored. It has short, slender legs with three small toes and a pink paw pad on each foot. Eevee has brown eyes, long pointed ears with dark brown interiors, and a small black nose.Eevee is rarely found in the wild and is mostly only found in cities and towns. It is said to have an irregularly shaped genetic structure that is easily influenced by its environment. This allows it to adapt to a variety of habitats by evolving. Eevee can potentially evolve into eight different evolutions. Eevee can also start to adopt the face of the Trainer that owns it. Eevee's genes are believed to have the key to solving the mysteries of Pokémon evolution. It's shown  that once an Eevee evolves into one of its eight evolved forms, their evolution cannot be changed especially with an evolution stone.",
+    'jigglypuff': "Jigglypuff is a pink Pokémon with a spherical body. It has pointed ears with black insides and large, blue eyes. It has small, stubby arms and slightly longer feet. On top of its head is a curled tuft of fur. Its body is filled with air and, as seen in Pokémon Stadium, Jigglypuff can deflate until it is flat. It can float by drawing extra air into its body, as demonstrated in Super Smash Bros.Jigglypuff can use its eyes to mesmerize opponents. It has a large lung capacity, exceeding most other Pokémon. Once it has an opponent's attention, Jigglypuff will inflate its lungs and begin to sing a soothing and mysterious lullaby. This melody can cause anyone who listens to become sleepy. If the opponent resists falling asleep, Jigglypuff will endanger its own life by continuing to sing until it runs out of air. It will continue to sing until the opponent is asleep. It can adjust the wavelength of its voice to match the brain waves of someone in a deep sleep. This helps ensure drowsiness in its opponents. Its vocal range exceeds 12 octaves, but its skill depends on the individual. Its song varies by region, and in some areas, it sounds like shouting. Jigglypuff can mostly be found in lush green plains and grassy meadows. Scream Tail shares a resemblance to Jigglypuff. It is believed Scream Tail is Jigglypuff's ancestor from 1,000,000,000 years ago. As mentioned in Pokémon Sleep, Jigglypuff is known to sing even when sleeping.["
 }
 
 def detect(frame, model):
@@ -97,20 +97,22 @@ if scan_button_pressed:
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
         result, conf = detect(frame, model)
-
+        frame_placeholder.image(frame, channels="RGB")
         if result in labels:
             if conf > 0.9:
+                cap.release()
                 st.write(descriptions[labels[result]])
                 pic_check=True
+                
+                if pic_check:
+                    frame_placeholder.image(Images[result], channels="RGB")
                 engine = pyttsx3.init()
                 volume = engine.getProperty('volume')   #getting to know current volume level (min=0 and max=1)
-                engine.setProperty('volume',0.5)    # setting up volume level  between 0 and 1
+                engine.setProperty('volume',1)    # setting up volume level  between 0 and 1
                 engine.say(descriptions[labels[result]])
                 engine.runAndWait()
-                # break
-        frame_placeholder.image(frame, channels="RGB")
-        if pic_check:
-            frame_placeholder.image(Images[result], channels="RGB")
+                break
         if stop_button_pressed:
+            engine.stop()
             cap.release()
     cap.release()
